@@ -19,7 +19,6 @@ const root = {
     return "hello world";
   },
   welcomeMessage: (params) => {
-    console.log(params);
     return `Welcome ${params.name}`;
   },
   userName: () => "Gopi",
