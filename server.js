@@ -1,29 +1,10 @@
-const express = require("express");
-const { buildSchema } = require("graphql");
-const { graphqlHTTP } = require("express-graphql");
+import express from "express";
+import { graphqlHTTP } from "express-graphql";
+import schema from "./schema.js";
+import root from "./root.js";
 
 const PORT = 4001;
 const app = express();
-
-const schema = buildSchema(`
-type Query {
-    hello: String!
-    welcomeMessage(name : String) : String
-    userName : String
-    age : Int
-}
-`);
-
-const root = {
-  hello: () => {
-    return "hello world";
-  },
-  welcomeMessage: (params) => {
-    return `Welcome ${params.name}`;
-  },
-  userName: () => "Gopi",
-  age: () => 25,
-};
 
 app.use(
   "/graphql",
